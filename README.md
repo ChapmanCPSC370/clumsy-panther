@@ -21,7 +21,14 @@ npm install
 Then just type on your shell:
 
 ```
+grunt 
+
+```
+If there are no errors, you can  then type 
+
+```
 grunt connect
+
 ```
 
 Open your browser at `http://localhost:8001/`

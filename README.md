@@ -31,13 +31,10 @@ npm install
 -- Type the following commands in the terminal to run the program:
 ```
 grunt 
-
 ```
 If there are no errors, you can  then type 
 
 ```
-
-grunt
 grunt connect
 
 ```

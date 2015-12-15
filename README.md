@@ -50,3 +50,7 @@ See [CUSTOMIZING](https://github.com/self103/clumsy-panther/blob/gh-pages/CUSTOM
 
 This version is protected under the [MIT License](https://github.com/self103/clumsy-panther/blob/gh-pages/LICENSE)
 
+## Communication
+
+Team communication found [here](https://clumsy-panther.slack.com)
+

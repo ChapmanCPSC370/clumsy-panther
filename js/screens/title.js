@@ -25,7 +25,7 @@ game.TitleScreen = me.ScreenObject.extend({
         //logo
         var logoImg = me.loader.getImage('logo');
         this.logo = new me.Sprite(
-            me.game.viewport.width/2 - 170, ///MODIFY LOGO HORIZONTAL
+            me.game.viewport.width/2 - 275, ///MODIFY LOGO HORIZONTAL
             -logoImg,
             {image: logoImg}
         );

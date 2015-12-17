@@ -18,6 +18,7 @@ game.PlayScreen = me.ScreenObject.extend({
         game.data.score = 0;
         game.data.steps = 0;
         game.data.start = false;
+        game.data.level=0;
         game.data.newHiscore = false;
 
         me.game.world.addChild(new BackgroundLayer('bg', 1));
@@ -38,18 +39,19 @@ game.PlayScreen = me.ScreenObject.extend({
         me.input.bindPointer(me.input.mouse.LEFT, me.input.KEY.SPACE);
 
         this.getReady = new me.Sprite(
-            me.video.renderer.getWidth()/2 - 200,
-            me.video.renderer.getHeight()/2 - 100,
-            {image: me.loader.getImage('getready')}
+            me.video.renderer.getWidth()/2-450, //- 200,
+            me.video.renderer.getHeight()/2-325, //- 100,
+            {image: me.loader.getImage('readytochap')}//'getready')}
         );
         me.game.world.addChild(this.getReady, 11);
 
         var that = this;
-        var fadeOut = new me.Tween(this.getReady).to({alpha: 0}, 2000)
+        var fadeOut = new me.Tween(this.getReady).to({alpha: 0}, 3000)
             .easing(me.Tween.Easing.Linear.None)
             .onComplete(function() {
                     game.data.start = true;
                     me.game.world.addChild(new PipeGenerator(), 0);
+                    //me.game.world.addChild(new WindowGenerator(), 0);                    
                     me.game.world.removeChild(that.getReady);
              }).start();
     },

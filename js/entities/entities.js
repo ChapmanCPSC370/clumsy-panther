@@ -138,13 +138,90 @@ var RainbowEntity = me.Entity.extend({
     },
 });
 */
+var WindowOfOppEntity = me.Entity.extend({
+    init: function(x, y) {
+        var settings = {};
+        settings.image = this.image = me.loader.getImage('windowOfOpp');
+        settings.width = 64;
+        settings.height= 64;
+        settings.framewidth = 64;
+        settings.frameheight = 64;
 
+        this._super(me.Entity, 'init', [x, y, settings]);
+        this.alwaysUpdate = true;
+        this.body.gravity = 0;
+        this.body.vel.set(-5, 0);
+        this.type = 'windowOfOpp';
+    },
+
+    update: function(dt) {
+        // mechanics
+        if (!game.data.start) {
+            return this._super(me.Entity, 'update', [dt]);
+        }
+        this.pos.add(this.body.vel);
+        if (this.pos.x < -this.image.width) {
+            me.game.world.removeChild(this);
+        }
+        me.Rect.prototype.updateBounds.apply(this);
+        this._super(me.Entity, 'update', [dt]);
+        return true;
+    },
+
+});
+
+var WindowGenerator = me.Renderable.extend({
+    init: function() {
+        this._super(me.Renderable, 'init', [0, me.game.viewport.width, me.game.viewport.height]);
+        this.alwaysUpdate = true;
+        this.generate = 0;
+        this.pipeFrequency = 92;
+        this.pipeHoleSize = 1240;
+        this.posX = me.game.viewport.width;
+    },
+
+    update: function(dt) {
+        if (this.generate++ % this.pipeFrequency == 0) {
+            var posY = Number.prototype.random(
+                    me.video.renderer.getHeight() - 100,
+                    200
+            );
+            var posY2 = posY - me.video.renderer.getHeight() - this.pipeHoleSize;
+            var window1 = new me.pool.pull('windowOfOpp', this.posX, posY);
+            var window2 = new me.pool.pull('windowOfOpp', this.posX, posY2);
+            var hitPos = posY - 100;
+            var hit = new me.pool.pull("hit", this.posX, hitPos);
+            window1.renderable.flipY(true);
+            me.game.world.addChild(window1, 10);
+            me.game.world.addChild(window2, 10);
+            me.game.world.addChild(hit, 11);
+        }
+        this._super(me.Entity, "update", [dt]);
+        return true;
+    },
+
+});
 
 
 var PipeEntity = me.Entity.extend({
     init: function(x, y) {
         var settings = {};
-        settings.image = this.image = me.loader.getImage('pipe');
+        if (Math.floor(game.data.steps/10)%4==1)
+        {
+            settings.image = this.image = me.loader.getImage('pipe2');
+        }
+        else if (Math.floor(game.data.steps/10)%4==2)
+        {
+            settings.image = this.image = me.loader.getImage('pipe1');
+        }
+        else if (Math.floor(game.data.steps/10)%4==3)
+        {
+            settings.image = this.image = me.loader.getImage('pipe3');
+        }
+        else
+        {
+            settings.image = this.image = me.loader.getImage('pipe');
+        }
         settings.width = 148;
         settings.height= 1664;
         settings.framewidth = 148;
@@ -175,12 +252,14 @@ var PipeEntity = me.Entity.extend({
 
 var PipeGenerator = me.Renderable.extend({
     init: function() {
+        var i=0;
         this._super(me.Renderable, 'init', [0, me.game.viewport.width, me.game.viewport.height]);
         this.alwaysUpdate = true;
         this.generate = 0;
         this.pipeFrequency = 92;
-        this.pipeHoleSize = 1240;
+        this.pipeHoleSize = 1400;
         this.posX = me.game.viewport.width;
+        i=i+50;
     },
 
     update: function(dt) {
@@ -199,11 +278,21 @@ var PipeGenerator = me.Renderable.extend({
             me.game.world.addChild(pipe2, 10);
             me.game.world.addChild(hit, 11);
         }
+        if (game.data.steps%10==0)
+        {
+            this.pipeHoleSize=1400-((game.data.steps%10)*45);
+        }
+        else
+        {
+            this.pipeHoleSize=this.pipeHoleSize-((game.data.steps%15)*.03);
+        }
+        
         this._super(me.Entity, "update", [dt]);
         return true;
     },
 
 });
+
 
 var HitEntity = me.Entity.extend({
     init: function(x, y) {
@@ -224,25 +313,6 @@ var HitEntity = me.Entity.extend({
         this.body.addShape(new me.Rect(0, 0, settings.width - 30, settings.height - 30));
         this.type = 'hit';
     },
-    
-/*
-var RainbowEntity = me.Entity.extend({
-    init: function(x,y,angle) {
-        var settings = {};
-        settings.image = me.loader.getImage('rainbow');
-        settings.width = 20;
-        settings.height = 36;
-        this._super(me.Entity,'init',[x,y,settings]);
-        this.alwaysUpdate = true;
-        this.body.gravity = 0;
-        this.body.vel.set(-6,0);
-        this.body.addShape(new me.Rect(0,0,settings.width,settings.height));
-        this.renderable.angle = angle;
-        this.body.collisionType = me.collision.types.NO_OBJECT;
-        this.type = 'rainbow';
-
-    },
-*/
     
     
 
@@ -283,3 +353,4 @@ var Ground = me.Entity.extend({
     },
 
 });
+

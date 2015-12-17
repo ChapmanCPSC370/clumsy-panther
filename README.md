@@ -43,13 +43,11 @@ If a "/usr/bin/env: node: No such file or directory" error ocurrs, try following
 ## License
 
 This version is protected under the [MIT License](https://github.com/self103/clumsy-panther/blob/gh-pages/LICENSE)
-Team communication found [here](https://clumsy-panther.slack.com)
 
 ## Contributing
 In order to contribute, add your name to [this](https://github.com/self103/clumsy-panther/blob/gh-pages/CLA.txt) document and email self103@mail.chapman.edu for access to [contributor communication channel](https://clumsy-panther.slack.com). 
 
 ## Making your customization
-
 See [CUSTOMIZING](https://github.com/self103/clumsy-panther/blob/gh-pages/CUSTOMIZING.md)
 
 

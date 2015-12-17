@@ -44,6 +44,7 @@ var game = {
         me.pool.register("pipe", PipeEntity, true);
         me.pool.register("hit", HitEntity, true);
         me.pool.register("ground", Ground, true);
+        me.pool.register("window",WindowOfOppEntity,true);
 
         // in melonJS 1.0.0, viewport size is set to Infinity by default
         me.game.viewport.setBounds(0, 0, 900, 600);

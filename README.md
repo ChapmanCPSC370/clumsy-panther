@@ -46,7 +46,7 @@ This version is protected under the [MIT License](https://github.com/self103/clu
 Team communication found [here](https://clumsy-panther.slack.com)
 
 ## Contributing
-In order to contribute, add your name to [this](https://github.com/self103/clumsy-panther/blob/gh-pages/CLA) document and email self103@mail.chapman.edu for access to [contributor communication channel](https://clumsy-panther.slack.com). 
+In order to contribute, add your name to [this](https://github.com/self103/clumsy-panther/blob/gh-pages/CLA.txt) document and email self103@mail.chapman.edu for access to [contributor communication channel](https://clumsy-panther.slack.com). 
 
 ## Making your customization
 

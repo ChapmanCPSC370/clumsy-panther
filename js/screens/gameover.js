@@ -80,19 +80,22 @@ game.GameOverScreen = me.ScreenObject.extend({
                 this.font = new me.Font('gamefont', 40, 'black', 'left');
                 this.steps = 'Score: ' + game.data.steps.toString();
                 this.topSteps= 'High Score: ' + me.save.topSteps.toString();
+                this.level= 'Level: '+ (Math.floor((game.data.steps)/10)).toString();
             },
 
             draw: function (renderer) {
                 var stepsText = this.font.measureText(renderer, this.steps);
                 var topStepsText = this.font.measureText(renderer, this.topSteps);
                 var scoreText = this.font.measureText(renderer, this.score);
+                var levelText = this.font.measureText(renderer, this.level);
+
 
                 //steps
                 this.font.draw(
                     renderer,
                     this.steps,
                     me.game.viewport.width/2 - stepsText.width/2 - 60,
-                    me.game.viewport.height/2
+                    me.game.viewport.height/2 +50
                 );
 
                 //top score
@@ -100,7 +103,15 @@ game.GameOverScreen = me.ScreenObject.extend({
                     renderer,
                     this.topSteps,
                     me.game.viewport.width/2 - stepsText.width/2 - 60,
-                    me.game.viewport.height/2 + 50
+                    me.game.viewport.height/2 + 100
+                );
+
+                //level
+                this.font.draw(
+                    renderer,
+                    this.level,
+                    me.game.viewport.width/2 - stepsText.width/2 - 60,
+                    me.game.viewport.height/2 
                 );
             }
         }));

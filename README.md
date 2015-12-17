@@ -33,24 +33,23 @@ npm install
 grunt 
 ```
 If there are no errors, you can  then type 
-
 ```
 grunt connect
-
 ```
 Open your browser at `http://localhost:8001/`
 
 If a "/usr/bin/env: node: No such file or directory" error ocurrs, try following this [page](http://stackoverflow.com/questions/26320901/cannot-install-nodejs-usr-bin-env-node-no-such-file-or-directory)
 
+## License
+
+This version is protected under the [MIT License](https://github.com/self103/clumsy-panther/blob/gh-pages/LICENSE)
+Team communication found [here](https://clumsy-panther.slack.com)
+
+## Contributing
+In order to contribute, add your name to [this](https://github.com/self103/clumsy-panther/blob/gh-pages/CLA) document and email self103@mail.chapman.edu for access to [contributor communication channel](https://clumsy-panther.slack.com). 
+
 ## Making your customization
 
 See [CUSTOMIZING](https://github.com/self103/clumsy-panther/blob/gh-pages/CUSTOMIZING.md)
 
-## License
-
-This version is protected under the [MIT License](https://github.com/self103/clumsy-panther/blob/gh-pages/LICENSE)
-
-## Communication
-
-Team communication found [here](https://clumsy-panther.slack.com)
 
